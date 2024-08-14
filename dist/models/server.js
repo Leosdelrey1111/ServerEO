@@ -16,6 +16,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const sucursal_1 = __importDefault(require("../routes/sucursal"));
 const connection_1 = __importDefault(require("../db/connection"));
+const producto_1 = __importDefault(require("../routes/producto"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -37,6 +38,7 @@ class Server {
             });
         });
         this.app.use('/api/sucursales', sucursal_1.default);
+        this.app.use('/api/productos', producto_1.default);
     }
     midlewares() {
         //Parseamos el body
