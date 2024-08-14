@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const sucursal_1 = require("../controllers/sucursal");
-const router = (0, express_1.Router)();
-router.get('/', sucursal_1.getSucursales);
-router.get('/:id', sucursal_1.getSucursal);
-router.delete('/:id', sucursal_1.deleteSucursal);
-router.post('/', sucursal_1.postSucursal);
-router.put('/:id', sucursal_1.updateSucursal);
-exports.default = router;
+const routerSucursal = (0, express_1.Router)();
+routerSucursal.get('/', sucursal_1.getSucursales);
+routerSucursal.get('/:id', sucursal_1.getSucursal);
+routerSucursal.delete('/:id', sucursal_1.deleteSucursal);
+routerSucursal.post('/', sucursal_1.postSucursal);
+routerSucursal.put('/:id', sucursal_1.updateSucursal);
+exports.default = routerSucursal;
