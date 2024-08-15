@@ -4,6 +4,7 @@ import routeSucursal from '../routes/sucursal';
 import db from '../db/connection';
 import router from '../routes/producto';
 import routerProducto from '../routes/producto';
+import routerVenta from '../routes/venta';
 
 class Server {
     private app: Application;
@@ -32,6 +33,7 @@ class Server {
         })
         this.app.use('/api/sucursales', routeSucursal)
         this.app.use('/api/productos',routerProducto)
+        this.app.use('/api/ventas',routerVenta)
     }
 
     midlewares() {
