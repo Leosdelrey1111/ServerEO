@@ -5,24 +5,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const connection_1 = __importDefault(require("../db/connection"));
-const Juego = connection_1.default.define('Juego', {
-    Nom_Jueg: {
+const Dato = connection_1.default.define('Dato', {
+    Banc_Nom: {
         type: sequelize_1.DataTypes.STRING
     },
-    Precio: {
-        type: sequelize_1.DataTypes.DOUBLE
-    },
-    Tiempo: {
+    Clabe_InterBanc: {
         type: sequelize_1.DataTypes.STRING
     },
-    Dispon_Jueg: {
-        type: sequelize_1.DataTypes.BOOLEAN
-    },
-    Img_Jueg: {
+    Num_Cuenta: {
         type: sequelize_1.DataTypes.STRING
+    },
+    Img_QR: {
+        type: sequelize_1.DataTypes.STRING
+    },
+    Info_Empresa: {
+        type: sequelize_1.DataTypes.TEXT
     },
 }, {
     createdAt: false,
     updatedAt: false,
 });
-exports.default = Juego;
+exports.default = Dato;

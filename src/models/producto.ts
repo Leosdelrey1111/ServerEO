@@ -13,9 +13,6 @@ const Producto = db.define('Producto', {
     Exist_Prod:{
         type:DataTypes.INTEGER
     },
-    Cant_Prod:{
-        type:DataTypes.INTEGER
-    },
     Prec_Prod:{
         type:DataTypes.FLOAT
     },
@@ -27,7 +24,10 @@ const Producto = db.define('Producto', {
     },
     IDDistribuidor:{
         type:DataTypes.CHAR
-    }
+    },
+    Img_Prod: {
+        type: DataTypes.STRING
+    },
     
 },
 {
