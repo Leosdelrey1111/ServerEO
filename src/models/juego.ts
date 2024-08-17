@@ -1,17 +1,20 @@
 import { DataTypes } from 'sequelize';
 import db from '../db/connection';
 
-const Sucursal = db.define('Sucursal', {
-    Nom_Suc: {
+const Juego = db.define('Juego', {
+    Nom_Jueg: {
         type: DataTypes.STRING
     },
-    Loc_Suc: {
+    Precio: {
+        type: DataTypes.DOUBLE
+    },
+    Tiempo: {
         type: DataTypes.STRING
     },
-    Des_Suc: {
-        type: DataTypes.STRING
+    Dispon_Jueg: {
+        type: DataTypes.BOOLEAN
     },
-    Img_Suc: {
+    Img_Jueg: {
         type: DataTypes.STRING
     },
 }, {
@@ -19,4 +22,4 @@ const Sucursal = db.define('Sucursal', {
     updatedAt: false,
 });
 
-export default Sucursal;
+export default Juego;

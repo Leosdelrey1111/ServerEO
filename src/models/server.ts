@@ -2,9 +2,12 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import routeSucursal from '../routes/sucursal';
 import db from '../db/connection';
-import router from '../routes/producto';
 import routerProducto from '../routes/producto';
 import routerVenta from '../routes/venta';
+import routerJuego from '../routes/juego';
+import routerEmpleado from '../routes/empleado';
+import routerRol from '../routes/rol';
+import routerDato from '../routes/dato';
 
 class Server {
     private app: Application;
@@ -34,6 +37,10 @@ class Server {
         this.app.use('/api/sucursales', routeSucursal)
         this.app.use('/api/productos',routerProducto)
         this.app.use('/api/ventas',routerVenta)
+        this.app.use('/api/juegos',routerJuego)
+        this.app.use('/api/empleados',routerEmpleado)
+        this.app.use('/api/roles',routerRol)
+        this.app.use('/api/datos',routerDato)
     }
 
     midlewares() {

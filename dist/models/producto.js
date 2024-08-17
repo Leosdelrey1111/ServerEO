@@ -18,9 +18,6 @@ const Producto = connection_1.default.define('Producto', {
     Exist_Prod: {
         type: sequelize_1.DataTypes.INTEGER
     },
-    Cant_Prod: {
-        type: sequelize_1.DataTypes.INTEGER
-    },
     Prec_Prod: {
         type: sequelize_1.DataTypes.FLOAT
     },
@@ -32,7 +29,10 @@ const Producto = connection_1.default.define('Producto', {
     },
     IDDistribuidor: {
         type: sequelize_1.DataTypes.CHAR
-    }
+    },
+    Img_Prod: {
+        type: sequelize_1.DataTypes.STRING
+    },
 }, {
     createdAt: false,
     updatedAt: false

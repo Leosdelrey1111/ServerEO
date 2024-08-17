@@ -18,6 +18,10 @@ const sucursal_1 = __importDefault(require("../routes/sucursal"));
 const connection_1 = __importDefault(require("../db/connection"));
 const producto_1 = __importDefault(require("../routes/producto"));
 const venta_1 = __importDefault(require("../routes/venta"));
+const juego_1 = __importDefault(require("../routes/juego"));
+const empleado_1 = __importDefault(require("../routes/empleado"));
+const rol_1 = __importDefault(require("../routes/rol"));
+const dato_1 = __importDefault(require("../routes/dato"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -41,6 +45,10 @@ class Server {
         this.app.use('/api/sucursales', sucursal_1.default);
         this.app.use('/api/productos', producto_1.default);
         this.app.use('/api/ventas', venta_1.default);
+        this.app.use('/api/juegos', juego_1.default);
+        this.app.use('/api/empleados', empleado_1.default);
+        this.app.use('/api/roles', rol_1.default);
+        this.app.use('/api/datos', dato_1.default);
     }
     midlewares() {
         //Parseamos el body
