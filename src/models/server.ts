@@ -8,6 +8,9 @@ import routerJuego from '../routes/juego';
 import routerEmpleado from '../routes/empleado';
 import routerRol from '../routes/rol';
 import routerDato from '../routes/dato';
+import routertip_prods from '../routes/tip_prods';
+import routerdistribuidors from '../routes/distribuidors';
+import routernotas from '../routes/notas';
 
 class Server {
     private app: Application;
@@ -41,6 +44,9 @@ class Server {
         this.app.use('/api/empleados',routerEmpleado)
         this.app.use('/api/roles',routerRol)
         this.app.use('/api/datos',routerDato)
+        this.app.use('/api/tip_Prod',routertip_prods)
+        this.app.use('/api/distribuidors',routerdistribuidors)
+        this.app.use('/api/Notas',routernotas)
     }
 
     midlewares() {
