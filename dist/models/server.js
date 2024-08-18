@@ -22,6 +22,9 @@ const juego_1 = __importDefault(require("../routes/juego"));
 const empleado_1 = __importDefault(require("../routes/empleado"));
 const rol_1 = __importDefault(require("../routes/rol"));
 const dato_1 = __importDefault(require("../routes/dato"));
+const tip_prods_1 = __importDefault(require("../routes/tip_prods"));
+const distribuidors_1 = __importDefault(require("../routes/distribuidors"));
+const notas_1 = __importDefault(require("../routes/notas"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -49,6 +52,9 @@ class Server {
         this.app.use('/api/empleados', empleado_1.default);
         this.app.use('/api/roles', rol_1.default);
         this.app.use('/api/datos', dato_1.default);
+        this.app.use('/api/tip_Prod', tip_prods_1.default);
+        this.app.use('/api/distribuidors', distribuidors_1.default);
+        this.app.use('/api/Notas', notas_1.default);
     }
     midlewares() {
         //Parseamos el body

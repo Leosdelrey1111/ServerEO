@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const tip_prods_1 = require("../controllers/tip_prods");
+const routertip_prods = (0, express_1.Router)();
+routertip_prods.get('/', tip_prods_1.getTip_prodss);
+routertip_prods.get('/:id', tip_prods_1.getTip_prods);
+routertip_prods.delete('/:id', tip_prods_1.deleteTipProds);
+routertip_prods.post('/', tip_prods_1.postTipProds);
+routertip_prods.put('/:id', tip_prods_1.updateTipProds);
+exports.default = routertip_prods;
