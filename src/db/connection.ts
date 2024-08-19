@@ -6,8 +6,7 @@ import { Sequelize } from 'sequelize';
     logging: false
   }); */
 
-  const sequelize = new Sequelize('mr_macondo', 'root', '123456789', { //Recuerda cambiar contraseña 
-    host: 'localhost',
+  const sequelize = new Sequelize('mr_macondo', 'root', 'celeste1234', {
     dialect: 'mysql',
     logging: false
   });

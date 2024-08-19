@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateEmpleado = exports.postEmpleado = exports.deleteEmpleado = exports.getEmpleado = exports.getEmpleados = void 0;
+exports.updateEstadoEmpleado = exports.updateEmpleado = exports.postEmpleado = exports.deleteEmpleado = exports.getEmpleado = exports.getEmpleados = void 0;
 const empleado_1 = __importDefault(require("../models/empleado"));
 const getEmpleados = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -40,20 +40,29 @@ const getEmpleado = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getEmpleado = getEmpleado;
 const deleteEmpleado = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const empleado = yield empleado_1.default.findByPk(id);
-    if (!empleado) {
-        res.status(404).json({ msg: `No existe el empleado con la id: ${id}` });
+    try {
+        const empleado = yield empleado_1.default.findByPk(id);
+        if (!empleado) {
+            return res.status(404).json({ msg: `No existe el empleado con la id: ${id}` });
+        }
+        yield empleado.destroy();
+        res.json({ msg: 'El empleado fue eliminado con éxito' });
     }
-    else {
-        yield empleado_1.default.destroy();
-        res.json({
-            msg: 'El empleado fue eliminado con exito'
-        });
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Error al eliminar el empleado' });
     }
 });
 exports.deleteEmpleado = deleteEmpleado;
 const postEmpleado = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
+    const { Emp_Email } = req.body;
+    const email = yield empleado_1.default.findOne({ where: { Emp_Email: Emp_Email } });
+    if (email) {
+        return res.status(400).json({
+            msg: 'El email ya esta registrado en la base de datos'
+        });
+    }
     try {
         yield empleado_1.default.create(body);
         res.json({
@@ -93,3 +102,26 @@ const updateEmpleado = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.updateEmpleado = updateEmpleado;
+const updateEstadoEmpleado = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { estado } = req.body;
+    try {
+        const empleado = yield empleado_1.default.findByPk(id);
+        if (!empleado) {
+            return res.status(404).json({
+                msg: `No existe el empleado con la id: ${id}`
+            });
+        }
+        yield empleado.update({ Estado: estado });
+        res.json({
+            msg: 'El estado del empleado ha sido actualizado correctamente'
+        });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'Error al actualizar el estado del empleado'
+        });
+    }
+});
+exports.updateEstadoEmpleado = updateEstadoEmpleado;

@@ -29,21 +29,34 @@ export const getEmpleado = async (req: Request, res: Response) => {
 
 export const deleteEmpleado = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const empleado = await Empleado.findByPk(id);
+    try {
+        const empleado = await Empleado.findByPk(id);
 
-    if(!empleado) {
-        res.status(404).json({msg: `No existe el empleado con la id: ${id}`})
-    } else {
-        await Empleado.destroy();
-        res.json({
-            msg: 'El empleado fue eliminado con exito'
-        })
+        if (!empleado) {
+            return res.status(404).json({ msg: `No existe el empleado con la id: ${id}` });
+        }
+
+        await empleado.destroy();
+        res.json({ msg: 'El empleado fue eliminado con éxito' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Error al eliminar el empleado' });
     }
-}
+};
+
 
 
 export const postEmpleado = async (req: Request, res: Response) => {
     const { body } = req;
+    const { Emp_Email } = req.body;
+
+    const email = await Empleado.findOne({where: {Emp_Email: Emp_Email}})
+    if (email) {
+        return res.status(400).json ({
+            msg: 'El email ya esta registrado en la base de datos'
+        });
+    }
+
     try {
         await Empleado.create(body);
 
@@ -81,3 +94,29 @@ export const updateEmpleado = async (req: Request, res: Response) => {
     }
 
 }
+
+export const updateEstadoEmpleado = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { estado } = req.body;
+
+    try {
+        const empleado = await Empleado.findByPk(id);
+
+        if (!empleado) {
+            return res.status(404).json({
+                msg: `No existe el empleado con la id: ${id}`
+            });
+        }
+
+        await empleado.update({ Estado: estado });
+
+        res.json({
+            msg: 'El estado del empleado ha sido actualizado correctamente'
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'Error al actualizar el estado del empleado'
+        });
+    }
+};

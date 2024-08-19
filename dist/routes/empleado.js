@@ -8,4 +8,5 @@ routerEmpleado.get('/:id', empleado_1.getEmpleado);
 routerEmpleado.delete('/:id', empleado_1.deleteEmpleado);
 routerEmpleado.post('/', empleado_1.postEmpleado);
 routerEmpleado.put('/:id', empleado_1.updateEmpleado);
+routerEmpleado.put('/:id/estado', empleado_1.updateEstadoEmpleado);
 exports.default = routerEmpleado;

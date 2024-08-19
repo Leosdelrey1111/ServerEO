@@ -11,6 +11,7 @@ import routerDato from '../routes/dato';
 import routertip_prods from '../routes/tip_prods';
 import routerdistribuidors from '../routes/distribuidors';
 import routernotas from '../routes/notas';
+import routerLogin from '../routes/usuario';
 
 class Server {
     private app: Application;
@@ -47,6 +48,7 @@ class Server {
         this.app.use('/api/tip_Prod',routertip_prods)
         this.app.use('/api/distribuidors',routerdistribuidors)
         this.app.use('/api/Notas',routernotas)
+        this.app.use('/api/login',routerLogin)
     }
 
     midlewares() {
