@@ -26,6 +26,7 @@ const tip_prods_1 = __importDefault(require("../routes/tip_prods"));
 const distribuidors_1 = __importDefault(require("../routes/distribuidors"));
 const notas_1 = __importDefault(require("../routes/notas"));
 const usuario_1 = __importDefault(require("../routes/usuario"));
+const cliente_1 = __importDefault(require("../routes/cliente"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -57,6 +58,7 @@ class Server {
         this.app.use('/api/distribuidors', distribuidors_1.default);
         this.app.use('/api/Notas', notas_1.default);
         this.app.use('/api/login', usuario_1.default);
+        this.app.use('/api/clientes', cliente_1.default);
     }
     midlewares() {
         //Parseamos el body

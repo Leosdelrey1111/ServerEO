@@ -1,11 +1,11 @@
 import { DataTypes } from 'sequelize';
 import db from '../db/connection';
 
-const distribuidors = db.define('distribuidors', {
-    Nom_Distr: {
+const Cliente = db.define('Cliente', {
+    Nom_Client: {
         type: DataTypes.STRING
     },
-    Desc_Distr: {
+    Email_Client: {
         type: DataTypes.STRING
     },
 }, {
@@ -13,4 +13,4 @@ const distribuidors = db.define('distribuidors', {
     updatedAt: false,
 });
 
-export default distribuidors;
+export default Cliente;
