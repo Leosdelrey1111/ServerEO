@@ -6,7 +6,7 @@ import { Sequelize } from 'sequelize';
     logging: false
   }); */
 
-  const sequelize = new Sequelize('mr_macondo', 'root', '123456789', {
+  const sequelize = new Sequelize('Mr_macondo', 'root', '123456', {
     dialect: 'mysql',
     logging: false
   });
